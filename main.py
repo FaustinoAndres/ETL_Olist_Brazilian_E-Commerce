@@ -1,4 +1,4 @@
-from .extract import *
+from extract.extract import create_kaggle_config_dir
 
 import logging
 logging.basicConfig(filename='log.log', filemode='w', level=logging.INFO)
