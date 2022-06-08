@@ -7,12 +7,15 @@ def download_data_from_kaggle(dataset: str = 'olistbr/brazilian-ecommerce') -> N
     os.environ['KAGGLE_CONFIG_DIR'] = f'{pwd}/.kaggle'
     os.system(f'kaggle datasets download -d {dataset}')
 
-def extract_data_from_zip_file(file_path: str) -> None:
+    path = pwd
 
-    name_file = file_path.split('/')[-1].strip('.zip')
-    print(name_file)
+    return (path, name_file)
 
+def extract_data_from_zip_file(file_path: str, name_file: str) -> None:
+
+    name_file = name_file.strip('.zip')
+    
     with ZipFile(file_path, 'r') as zip:
         pass
-        #zip.printdir()
-        #zip.extractall()
+        zip.printdir()
+        zip.extractall()
