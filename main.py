@@ -5,7 +5,7 @@ logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S
 from extract import *
 from constants import *
 
-print(type(ROOT))
+
 def pipeline() -> None:
 
     #Extract

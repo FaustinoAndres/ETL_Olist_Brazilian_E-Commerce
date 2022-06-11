@@ -71,17 +71,37 @@ def move_downloaded_zip_file(datasets: List[str]) -> None:
 
 
 def extract_data_from_zip_file(datasets: List[str]) -> None:
+    """
+    It takes a list of datasets, loops through each dataset, splits the dataset name from the path,
+    creates a path to the dataset, finds the zip file in the dataset directory, logs the start of the
+    extraction process, extracts the zip file, and logs the end of the extraction process
+
+    Args:
+        datasets (List[str]): List[str]
+    """
 
     for dataset in datasets:
         dataset = dataset.split('/')[1]
         dataset_path = DATA_RAW_DIR.resolve() / f'{dataset}'
-        file_path = str(list(dataset_path.glob('*.zip'))[0])
+        file_path = list(dataset_path.glob('*.zip'))[0]
+        logging.info(f'Starting to extract {dataset}.zip')
         extract_zip_file(file_path)
-        #    zip.printdir()
-        #    zip.extractall()
+        logging.info(f'Finished extraction process of the {dataset}.zip file')
 
-def extract_zip_file(file_path: str) -> None:
 
+def extract_zip_file(file_path: PosixPath) -> None:
+    """
+    It takes a zip file and extracts it to the same directory as the zip file
+
+    Args:
+        file_path (PosixPath): PosixPath = Path to the zip file
+    """
+
+    path = str(file_path.parent)
+    file_path = str(file_path)
     with ZipFile(file_path, 'r') as zip:
-        print(zip.namelist())
-        #zip.extractall()
+        namelist: List[str] = zip.namelist()
+        for member in namelist:
+            logging.info(f'Start to extract {member} file')
+            zip.extract(member=member, path=path)
+            logging.info(f'{member} file extracted successfully')
