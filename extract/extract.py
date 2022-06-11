@@ -14,12 +14,13 @@ def extract(datasets: List[str]) -> None:
 
     set_kaggle_config_dir_venv()
     logging.info('Starting extract process')
-    #create_dir_to_save_dataset(datasets)
-    #download_data_from_kaggle(datasets)
-    #move_downloaded_zip_file(datasets)
-    #extract_data_from_zip_file(datasets)
-    #remove_zip_files(datasets)
+    create_dir_to_save_dataset(datasets)
+    download_data_from_kaggle(datasets)
+    move_downloaded_zip_file(datasets)
+    extract_data_from_zip_file(datasets)
+    remove_zip_files(datasets)
     convert_csv_to_parquet_format(datasets)
+    delete_csv_files()
     logging.info('Finished extract process')
 
 def set_kaggle_config_dir_venv() -> None:
@@ -153,3 +154,12 @@ def save_parquet_file(csv_file: PosixPath) -> None:
     new_file: str = str(csv_file).replace('csv', 'parquet')
     logging.info(f'save {new_file.split("/")[-1]}')
     df.to_parquet(new_file, engine='fastparquet', index=False)
+
+def delete_csv_files() -> None:
+    """
+    It deletes all the CSV files in the project directory
+    """
+
+    logging.info('Deleting csv files')
+    completed_process: CompletedProcess = subprocess.run(['find', '.', '-name', '*.csv', '-delete'], capture_output=True)
+    capture_output(completed_process)
