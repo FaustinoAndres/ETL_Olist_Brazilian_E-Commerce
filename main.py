@@ -1,17 +1,15 @@
-from extract import *
-
 import os
 import logging
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', filename='log.log', filemode='w', level=logging.INFO)
 
-OLIST = 'olistbr/'
-BRAZILIAN_ECOMMERCE = 'brazilian-ecommerce'
-MARKETING_FUNNEL = 'marketing-funnel-olist'
+from extract import *
+from constants import *
 
+print(type(ROOT))
 def pipeline() -> None:
 
     #Extract
-    datasets = [OLIST+BRAZILIAN_ECOMMERCE, OLIST+MARKETING_FUNNEL]
+    datasets = [OLIST_BRAZILIAN_ECOMMERCE, OLIST_MARKETING_FUNNEL]
     extract(datasets)
 
     #Transform
