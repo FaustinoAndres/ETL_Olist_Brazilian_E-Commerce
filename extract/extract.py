@@ -4,6 +4,8 @@ import subprocess
 from typing import List
 from zipfile36 import ZipFile
 
+from utils import *
+
 def extract(datasets: List[str]) -> None:
 
     set_kaggle_config_dir_venv()
@@ -43,13 +45,9 @@ def create_dir_to_save_dataset(datasets: List[str]) -> None:
     """
 
     for dataset in datasets:
-        subprocess.check_output(
-            f"mkdir data/raw/{dataset}; exit 0",
-            stderr=subprocess.STDOUT,
-            shell=True)
-
-        os.system(f'mkdir data/raw/{dataset}')
-
+        message: str = subprocess.run(['mkdir', f'data/raw/{dataset}'], capture_output=True)
+        print(len(message.stdout))
+        logging.info(message.stderr)
 
 def move_downloaded_dataset(dataset: str) -> None:
 
