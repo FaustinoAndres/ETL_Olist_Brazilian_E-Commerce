@@ -1,5 +1,5 @@
 .kaggle/
-brazilian-ecommerce.zip
+*.zip
 .vscode/
 *.log
 
