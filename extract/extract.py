@@ -75,13 +75,13 @@ def extract_data_from_zip_file(datasets: List[str]) -> None:
     for dataset in datasets:
         dataset = dataset.split('/')[1]
         dataset_path = DATA_RAW_DIR.resolve() / f'{dataset}'
-        file_path = list(dataset_path.glob('*.zip'))[0]
-        print(file_path)
-        #extract_zip_file(file_path)
+        file_path = str(list(dataset_path.glob('*.zip'))[0])
+        extract_zip_file(file_path)
         #    zip.printdir()
         #    zip.extractall()
 
 def extract_zip_file(file_path: str) -> None:
 
     with ZipFile(file_path, 'r') as zip:
-        zip.namelist()
+        print(zip.namelist())
+        #zip.extractall()
