@@ -32,8 +32,8 @@ def download_data_from_kaggle(datasets: List[str]) -> None:
 
     for dataset in datasets:
         logging.info(f'Started to download {dataset} dataset')
-        message: str = subprocess.run(['kaggle', 'datasets', 'download', '-d', f'{dataset}'], capture_output=True)
-        logging.info(message.stdout)
+        completed_process: str = subprocess.run(['kaggle', 'datasets', 'download', '-d', f'{dataset}'], capture_output=True)
+        capture_output(completed_process)
         logging.info(f'Finished to download {dataset} dataset')
 
 def create_dir_to_save_dataset(datasets: List[str]) -> None:
@@ -45,9 +45,9 @@ def create_dir_to_save_dataset(datasets: List[str]) -> None:
     """
 
     for dataset in datasets:
-        message: str = subprocess.run(['mkdir', f'data/raw/{dataset}'], capture_output=True)
-        print(len(message.stdout))
-        logging.info(message.stderr)
+        completed_process: str = subprocess.run(['mkdir', f'data/raw/{dataset}'], capture_output=True)
+        capture_output(completed_process)
+        logging.info(completed_process.stderr)
 
 def move_downloaded_dataset(dataset: str) -> None:
 

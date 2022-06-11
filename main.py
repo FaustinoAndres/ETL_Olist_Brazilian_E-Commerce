@@ -8,7 +8,7 @@ OLIST = 'olistbr/'
 BRAZILIAN_ECOMMERCE = 'brazilian-ecommerce'
 MARKETING_FUNNEL = 'marketing-funnel-olist'
 
-def pipeline():
+def pipeline() -> None:
 
     #Extract
     datasets = [OLIST+BRAZILIAN_ECOMMERCE, OLIST+MARKETING_FUNNEL]
