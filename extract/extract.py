@@ -19,7 +19,7 @@ def extract(datasets: List[str]) -> None:
     #move_downloaded_zip_file(datasets)
     #extract_data_from_zip_file(datasets)
     #remove_zip_files(datasets)
-    #convert_csv_to_parquet_format(datasets)
+    convert_csv_to_parquet_format(datasets)
     logging.info('Finished extract process')
 
 def set_kaggle_config_dir_venv() -> None:
@@ -135,10 +135,12 @@ def convert_csv_to_parquet_format(datasets: List[str]) -> None:
 
     for dataset in datasets:
         dataset = dataset.split('/')[1]
+        logging.info(f'Start to convert csv files in {dataset} to parquet')
         dataset_path = DATA_RAW_DIR.resolve() / f'{dataset}'
         csv_files: List[PosixPath] = list(dataset_path.glob('*.csv'))
         for csv_file in csv_files:
             save_parquet_file(csv_file)
+        logging.info(f'conversion process finished in the {dataset} folder')
 
 def save_parquet_file(csv_file: PosixPath) -> None:
     """
@@ -147,7 +149,7 @@ def save_parquet_file(csv_file: PosixPath) -> None:
     Args:
         csv_file (PosixPath): The path to the CSV file you want to convert to Parquet.
     """
-
     df = pd.read_csv(csv_file)
     new_file: str = str(csv_file).replace('csv', 'parquet')
+    logging.info(f'save {new_file.split("/")[-1]}')
     df.to_parquet(new_file, engine='fastparquet', index=False)
