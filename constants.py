@@ -8,3 +8,5 @@ OLIST_MARKETING_FUNNEL = OLIST + MARKETING_FUNNEL
 
 ROOT = Path('.').resolve()
 DATA_RAW_DIR = ROOT.joinpath('data', 'raw')
+
+PRODUCTS = DATA_RAW_DIR / BRAZILIAN_ECOMMERCE / 'olist_products_dataset.parquet'
