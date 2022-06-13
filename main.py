@@ -5,7 +5,7 @@ logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S
 from extract import *
 from transform import *
 from constants import *
-
+from utils import connect_to_db
 
 def pipeline() -> None:
 
@@ -13,8 +13,16 @@ def pipeline() -> None:
     datasets = [OLIST_BRAZILIAN_ECOMMERCE, OLIST_MARKETING_FUNNEL]
     #extract(datasets)
 
+    try:
+        conn = connect_to_db()
+
+        print("Successful connection")
+
+    except Exception as ex:
+        print(ex)
+
     #Transform
-    transform()
+    #transform()
 
     #Load
 

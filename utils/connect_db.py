@@ -1,18 +1,13 @@
 import psycopg2
+from psycopg2 import connect
 from decouple import config
 
-try:
-    conn = psycopg2.connect(
+def connect_to_db() -> connect:
+
+    return psycopg2.connect(
         host = config('HOST'),
         database = config('DATABASE'),
         user = config('USER'),
-        password = config('PASSPORT')
+        password = config('PASSWORD')
         )
 
-    print("Successful connection")
-    #cursor = conn.cursor()
-    #row = cursor.fetchone()
-    #print(row)
-
-except Exception as ex:
-    print(ex)
