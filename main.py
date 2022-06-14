@@ -13,16 +13,8 @@ def pipeline() -> None:
     datasets = [OLIST_BRAZILIAN_ECOMMERCE, OLIST_MARKETING_FUNNEL]
     #extract(datasets)
 
-    try:
-        conn = connect_to_db()
-
-        print("Successful connection")
-
-    except Exception as ex:
-        print(ex)
-
     #Transform
-    #transform()
+    transform()
 
     #Load
 
