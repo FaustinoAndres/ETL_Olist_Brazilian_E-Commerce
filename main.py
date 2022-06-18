@@ -2,19 +2,21 @@ import os
 import logging
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', filename='log.log', filemode='w', level=logging.INFO)
 
-from extract import *
-from transform import *
-from constants import *
+import extract.extract as extract
+import transform.transform as transform
+from constants import ( OLIST_BRAZILIAN_ECOMMERCE,
+                        OLIST_MARKETING_FUNNEL,
+                        )
 from utils import connect_to_db
 
 def pipeline() -> None:
 
     #Extract
     datasets = [OLIST_BRAZILIAN_ECOMMERCE, OLIST_MARKETING_FUNNEL]
-    #extract(datasets)
+    extract(datasets)
 
     #Transform
-    transform()
+    #transform()
 
     #Load
 
