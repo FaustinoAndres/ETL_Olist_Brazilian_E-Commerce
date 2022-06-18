@@ -1,1 +1,6 @@
-from load.load import *
+import logging
+
+
+def load():
+
+    logging.info('Starting load process')

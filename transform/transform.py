@@ -1,17 +1,13 @@
 import logging
 import pandas as pd
+from pathlib import Path
 
 from utils import *
 from constants import *
 
 
-def transform():
+def transform() -> None:
 
-    logging.info("STARTING TRANSFORM")
+    logging.info('Starting transform process')
     transform_products(PRODUCTS)
 
-def transform_products(PRODUCTS) -> None:
-
-    df = pd.read_parquet(PRODUCTS)
-    print(df.head())
-    print(df.info())
