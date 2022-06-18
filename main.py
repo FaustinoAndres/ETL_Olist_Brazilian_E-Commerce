@@ -13,10 +13,10 @@ def pipeline() -> None:
 
     #Extract
     datasets = [OLIST_BRAZILIAN_ECOMMERCE, OLIST_MARKETING_FUNNEL]
-    extract(datasets)
+    #extract(datasets)
 
     #Transform
-    #transform()
+    transform()
 
     #Load
 
