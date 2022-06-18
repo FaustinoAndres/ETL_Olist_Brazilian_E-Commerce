@@ -4,7 +4,7 @@ from pathlib import Path
 
 from utils import *
 from constants import *
-from brazilian_ecommerce import transform_products
+from transform.brazilian_ecommerce import transform_products
 
 def transform() -> None:
 
