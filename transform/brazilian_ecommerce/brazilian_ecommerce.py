@@ -3,12 +3,13 @@ from pathlib import Path
 import logging
 from constants import *
 
-def transform_products(PRODUCTS: Path) -> None:
+
+def transform_products(PRODUCTS: Path, PROCESSED_DATA_DIR: Path) -> None:
 
     df: pd.DataFrame = pd.read_parquet(PRODUCTS)
-    print(df.head())
-    print(df.info())
-
+    
+    df['product_name_lenght'] = df['product_name_lenght'].apply(lambda row: try int(row) except ValueError)
+    print(df['product_name_lenght'])
 
 def transform_orders(ORDERS: Path, PROCESSED_DATA_DIR: Path) -> None:
 
