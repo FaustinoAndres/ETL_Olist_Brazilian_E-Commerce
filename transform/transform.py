@@ -13,7 +13,7 @@ def transform() -> None:
     logging.info('Starting transform process')
     #transform_products(PRODUCTS)
     create_processed_data_dir()
-    #transform_orders(ORDERS, PROCESSED_DATA_DIR)
+    transform_orders(ORDERS, PROCESSED_DATA_DIR)
     transform_products(PRODUCTS, PROCESSED_DATA_DIR)
 
 def create_processed_data_dir() -> None:
