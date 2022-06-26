@@ -1,3 +1,4 @@
+from typing import List
 import pandas as pd
 from pathlib import Path
 import logging
@@ -7,9 +8,10 @@ from constants import *
 def transform_products(PRODUCTS: Path, PROCESSED_DATA_DIR: Path) -> None:
 
     df: pd.DataFrame = pd.read_parquet(PRODUCTS)
-    
-    df['product_name_lenght'] = df['product_name_lenght'].apply(lambda row: try int(row) except ValueError)
-    print(df['product_name_lenght'])
+    columns_to_int: List[str] = ['product_name_lenght', 'product_description_lenght', 'product_photos_qty', 'product_weight_g', 'product_length_cm', 'product_height_cm', 'product_width_cm']
+
+    df[columns_to_int] = df[columns_to_int].astype('Int64', errors='ignore')
+
 
 def transform_orders(ORDERS: Path, PROCESSED_DATA_DIR: Path) -> None:
 
