@@ -24,7 +24,7 @@ def transform_orders(ORDERS: Path, PROCESSED_DATA_DIR: Path) -> None:
     for column in columns_to_datetime:
 
         df[column] = pd.to_datetime(df[column], dayfirst=True, errors = 'coerce')
-    
+
     processed_file: str = str(PROCESSED_DATA_DIR) + '/processed_' + str(ORDERS.name)
 
     df.to_parquet(processed_file, engine='fastparquet', index=False)

@@ -13,3 +13,5 @@ PROCESSED_DATA_DIR = ROOT.joinpath('data', 'processed')
 
 PRODUCTS = DATA_RAW_DIR / BRAZILIAN_ECOMMERCE / 'olist_products_dataset.parquet'
 ORDERS = DATA_RAW_DIR / BRAZILIAN_ECOMMERCE / 'olist_orders_dataset.parquet'
+PRODUCTS_CATEGORY_NAME_TRANSLATION = DATA_RAW_DIR / BRAZILIAN_ECOMMERCE / 'olist_products_category_name_translation.parquet'
+

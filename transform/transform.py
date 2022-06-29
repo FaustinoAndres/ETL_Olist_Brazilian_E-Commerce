@@ -6,7 +6,7 @@ from subprocess import CompletedProcess
 from utils import *
 from constants import *
 from transform.brazilian_ecommerce import *
-                                            
+
 
 def transform() -> None:
 
@@ -15,6 +15,7 @@ def transform() -> None:
     create_processed_data_dir()
     transform_orders(ORDERS, PROCESSED_DATA_DIR)
     transform_products(PRODUCTS, PROCESSED_DATA_DIR)
+
 
 def create_processed_data_dir() -> None:
 
